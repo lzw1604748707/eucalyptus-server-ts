@@ -1,13 +1,14 @@
 import Router from 'koa-router'
+import {Context} from 'koa'
 
 const router = new Router()
 
 router.get('/', async (ctx, next) => {
-  await console.log('首页请求哈哈')
+  ctx.body = ctx
 })
 
 router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
+  ctx.body = {a: 'aga'}
 })
 
 router.get('/json', async (ctx, next) => {

@@ -5,14 +5,12 @@
 import app from './app'
 const debug = require('debug')('demo:server')
 import http from 'http'
+//
 // 启动类
 class Boot {
-  private port: string | number | boolean = ''
-  private server: any = null
+  private port: string | number | boolean = '' //启动端口
+  private server: any = null //服务
   public initConfig() {
-    /**
-     * Get port from environment and store in Express.
-     */
     this.port = this.normalizePort(process.env.PORT || '3000')
     // app.set('port', port);
 
@@ -34,10 +32,8 @@ class Boot {
   private normalizePort(val: string | number): string | number | boolean {
     const port: number = parseInt('' + val, 10)
     let value: string | number | boolean = false
-    // named pipe
-    isNaN(port) && (value = val)
-    // named number
-    port >= 0 && (value = port)
+    isNaN(port) && (value = val) // named pipe
+    port >= 0 && (value = port) // named number
     return value
   }
 
@@ -48,7 +44,8 @@ class Boot {
     if (error.syscall !== 'listen') {
       throw error
     }
-    const bind = typeof this.port === 'string' ? 'Pipe ' + this.port : 'Port ' + this.port
+    const bind = (typeof this.port === 'string' ? 'Pipe ' : 'Port ') + this.port
+
     // handle specific listen errors with friendly messages
     switch (error.code) {
       case 'EACCES':
@@ -67,7 +64,6 @@ class Boot {
   /**
    * Event listener for HTTP server "listening" event.
    */
-
   private onListening() {
     const addr = this.server.address()
     const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port

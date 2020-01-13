@@ -8,8 +8,8 @@
       "args": [
         "${workspaceRoot}/src/boot.ts" // 入口文件
       ],
-
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node-dev",
+      "restart": true,
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "console": "integratedTerminal",

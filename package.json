@@ -9,7 +9,7 @@
   "scripts": {
     "start": "ts-node-dev src/boot.ts",
     "dev": "tsc && ./node_modules/.bin/nodemon dist/src/boot/index.js",
-    "prd": "pm2 start dist/src/boot/index",
+    "prd": "pm2 start src/boot.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
