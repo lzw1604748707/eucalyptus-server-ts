@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "declaration": true,
+    "moduleResolution": "node",
+    "declarationDir": "./dist/types",
+    "outDir": "./dist/src",
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "anshuye-server-ts",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/src",
+  "types": "dist/types",
+  "author": "Eucalyptus",
+  "license": "ISC",
+  "scripts": {
+    "start": "ts-node-dev src/boot.ts",
+    "dev": "tsc && ./node_modules/.bin/nodemon dist/src/boot/index.js",
+    "prd": "pm2 start dist/src/boot/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.0",
+    "koa-onerror": "^4.1.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.2.0",
+    "moment": "^2.24.0",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.0",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-convert": "^1.2.3",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.0",
+    "@types/koa-static": "^4.0.1",
+    "@types/koa-views": "^2.0.4",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2",
+    "ts-loader": "^6.0.4",
+    "ts-node": "^8.6.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.4"
+  }
+}
