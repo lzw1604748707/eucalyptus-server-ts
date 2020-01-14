@@ -1,7 +1,4 @@
-/**
- * Module dependencies.
- */
-
+// entry
 import app from './app'
 const debug = require('debug')('demo:server')
 import http from 'http'

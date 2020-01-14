@@ -8,8 +8,7 @@ import staticPath from 'koa-static'
 
 import moment from 'moment'
 
-import index from './routes/index'
-import users from './routes/users'
+import routes from './routes'
 
 moment.locale('zh-cn')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -34,10 +33,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(index.routes())
-app.use(index.allowedMethods())
-app.use(users.routes())
-app.use(users.allowedMethods())
+app.use(routes.routes()).use(routes.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
