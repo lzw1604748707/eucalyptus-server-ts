@@ -1,10 +1,10 @@
 import Router from 'koa-router'
-import {Context} from 'koa'
+import {Context, ParameterizedContext} from 'koa'
 
 const router = new Router()
 
-router.get('/', async (ctx, next) => {
-  ctx.body = ctx
+router.get('/', async (ctx: ParameterizedContext | Context, next) => {
+  await ctx.render('index', {title: 'api文档首页！！！'})
 })
 
 router.get('/string', async (ctx, next) => {
