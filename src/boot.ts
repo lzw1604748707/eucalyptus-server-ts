@@ -9,8 +9,6 @@ class Boot {
   private server: any = null //服务
   public initConfig() {
     this.port = this.normalizePort(process.env.PORT || '3000')
-    // app.set('port', port);
-
     // Create HTTP server.
     this.server = http.createServer(app.callback())
 
