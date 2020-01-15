@@ -1,43 +1,36 @@
 import Koa from 'koa'
 
+//online middlewares
+import logger from 'koa-logger'
+import bodyparser from 'koa-bodyparser'
+import staticPath from 'koa-static'
 import views from 'koa-views'
 import json from 'koa-json'
-import bodyparser from 'koa-bodyparser'
-import logger from 'koa-logger'
-import staticPath from 'koa-static'
-
-import moment from 'moment'
-
 import routes from './routes'
 
-moment.locale('zh-cn')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const onerror = require('koa-onerror')
-export const app = new Koa()
-// error handler
-onerror(app)
+//local middlewares
+import errorInterceptor from './middlewares/errorInterceptor'
 
-// middlewares
-app.use(bodyparser({enableTypes: ['json', 'form', 'text']}))
-app.use(json())
+// server-config
+import HttpServer from './middlewares/httpServer'
+import config from './config/server'
+
+const app = new Koa()
+
+// 显示控制台日志的中间件
 app.use(logger())
+// 用来解析post请求的中间件
+app.use(bodyparser({enableTypes: ['json', 'form', 'text']}))
+// 配置静态资源路径的中间件
 app.use(staticPath(__dirname + '/public'))
+// 非接口用来渲染视图的中间件
 app.use(views(__dirname + '/views', {extension: 'pug'}))
+// 美化显示json数据的中间件
+app.use(json())
 
-// logger
-app.use(async (ctx, next) => {
-  const start = +moment()
-  await next()
-  const ms = moment.duration(+moment() - start, 'ms')
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
-
+app.use(errorInterceptor)
 // routes
 app.use(routes.routes()).use(routes.allowedMethods())
 
-// error-handling
-app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
-})
-
-export default app
+// 监听服务
+export const httpServer = new HttpServer(app.callback(), config.port)

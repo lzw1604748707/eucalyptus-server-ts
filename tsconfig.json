@@ -11,6 +11,6 @@
     "strictNullChecks": true,
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "app.ts", "global.d.ts"],
   "exclude": ["node_modules"]
 }
