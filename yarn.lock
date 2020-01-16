@@ -205,9 +205,9 @@
   integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
 
 "@types/node@*":
-  version "13.1.6"
-  resolved "https://registry.npmjs.org/@types/node/-/node-13.1.6.tgz#076028d0b0400be8105b89a0a55550c86684ffec"
-  integrity sha512-Jg1F+bmxcpENHP23sVKkNuU3uaxPnsBMW0cLjleiikFKomJQbsn0Cqk2yDvQArqzZN6ABfBkZ0To7pQ8sLdWDg==
+  version "13.1.7"
+  resolved "https://registry.npmjs.org/@types/node/-/node-13.1.7.tgz#db51d28b8dfacfe4fb2d0da88f5eb0a2eca00675"
+  integrity sha512-HU0q9GXazqiKwviVxg9SI/+t/nAsGkvLDkIdxz+ObejG2nX6Si00TeLqHMoS+a/1tjH7a8YpKVQwtgHuMQsldg==
 
 "@types/node@^12.6.8":
   version "12.12.24"
@@ -963,7 +963,7 @@ esutils@^2.0.2:
 
 "eucalyptus-utils@https://github.com/lzw1604748707/eucalyptus-utils.git":
   version "1.0.5"
-  resolved "https://github.com/lzw1604748707/eucalyptus-utils.git#353b35e5e4dc4022e2cd2a8b1a714b8d1ebb4518"
+  resolved "https://github.com/lzw1604748707/eucalyptus-utils.git#2691748029ffd2b46344374d9b5b03d68471192e"
   dependencies:
     "@types/file-saver" "^2.0.1"
     "@types/lodash.debounce" "^4.0.6"

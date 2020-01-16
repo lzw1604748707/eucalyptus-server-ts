@@ -1,6 +1,7 @@
 import {Context, ParameterizedContext, Next} from 'koa'
 export default async (ctx: ParameterizedContext | Context, next: Next) => {
   const statusCode = ctx.status
+  await next()
   statusCode.toString().startsWith('4') &&
     (await ctx.render('error', {
       code: statusCode,

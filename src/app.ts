@@ -11,9 +11,11 @@ import routes from './routes'
 //local middlewares
 import errorInterceptor from './middlewares/errorInterceptor'
 
-// server-config
-import HttpServer from './middlewares/httpServer'
-import config from './config/server'
+// base-config
+import HttpServer from './base/httpServer'
+import serverConfig from './config/server'
+import CallApi, {ApiRequestConfig} from './base/callApi'
+import apiConfig from './config/axios'
 
 const app = new Koa()
 
@@ -28,9 +30,15 @@ app.use(views(__dirname + '/views', {extension: 'pug'}))
 // 美化显示json数据的中间件
 app.use(json())
 
-app.use(errorInterceptor)
 // routes
 app.use(routes.routes()).use(routes.allowedMethods())
 
+app.use(errorInterceptor)
 // 监听服务
-export const httpServer = new HttpServer(app.callback(), config.port)
+export const $httpServer = new HttpServer(app.callback(), serverConfig.port)
+export const $callApi: ({
+  api,
+  method,
+  param,
+  config
+}: ApiRequestConfig) => {} = new CallApi(apiConfig).callApi
