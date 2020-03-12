@@ -7,7 +7,8 @@
   "author": "Eucalyptus",
   "license": "ISC",
   "scripts": {
-    "serve": "ts-node-dev src/app.ts",
+    "dev": "ts-node-dev src/app.ts",
+    "serve": "ts-node src/app.ts",
     "prd": "pm2 start src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -43,7 +44,6 @@
     "eslint-plugin-prettier": "^3.1.0",
     "prettier": "^1.18.2",
     "ts-loader": "^6.0.4",
-    "ts-node": "^8.6.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.4"
   }

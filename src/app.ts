@@ -36,6 +36,8 @@ app.use(routes.routes()).use(routes.allowedMethods())
 app.use(errorInterceptor)
 // 监听服务
 export const $httpServer = new HttpServer(app.callback(), serverConfig.port)
+
+// api请求
 export const $callApi: ({
   api,
   method,

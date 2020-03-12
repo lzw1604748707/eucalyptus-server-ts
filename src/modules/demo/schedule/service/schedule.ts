@@ -1,4 +1,4 @@
-import {$callApi} from '../../../app'
+// import {$callApi} from '../../../../app'
 class ScheduleService {
   public async reFindBingNewDayImage() {
     return await {url: '我是图片Url'}
