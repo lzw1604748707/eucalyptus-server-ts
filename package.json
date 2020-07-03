@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "ts-node-dev src/app.ts",
     "serve": "ts-node src/app.ts",
-    "prd": "pm2 start src/app.ts",
+    "prd": "pm2 start pm2.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
