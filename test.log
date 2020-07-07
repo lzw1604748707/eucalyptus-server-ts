@@ -1,0 +1,1 @@
+{method:POST,url:/push,header:{content-type:application/json,user-agent:PostmanRuntime/7.25.0,accept:*/*,cache-control:no-cache,postman-token:63d33d71-35ba-4245-9a2d-7fb63ae719f8,host:10.10.10.51:3000,accept-encoding:gzip, deflate, br,connection:keep-alive,content-length:7}}
