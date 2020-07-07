@@ -9,8 +9,4 @@ router.post('/push', async (ctx, text) => {
   ctx.body = new Date().toDateString() + '  ' + '更新部署'
 })
 
-router.get('/from', async (ctx: ParameterizedContext | Context) => {
-  await ctx.render('from', {title: 'fafa'})
-})
-
 export default router
