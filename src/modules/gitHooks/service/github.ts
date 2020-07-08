@@ -9,7 +9,7 @@ class GithubSevice {
    */
   public async reAsignAutoDeploy(request: Application.Request) {
     try {
-      // await this.verifySignature(request)
+      await this.verifySignature(request)
       const {repository} = request.body
       const execPromise = util.promisify(exec)
       // 获取指定目录
