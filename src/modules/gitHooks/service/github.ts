@@ -9,10 +9,11 @@ class GithubSevice {
    */
   public async reAsignAutoDeploy(request: Application.Request) {
     try {
-      // await this.verifySignature(request)
+      await this.verifySignature(request)
       const {repository} = request.body
       // 获取指定目录
       const filePath = path.join(process.cwd(), '..', repository.name, 'package.sh')
+      exec('echo "' + filePath + '" >> data.log')
       if (repository.name === process.env['npm_package_name']) {
         // 设置执行权限
         exec('chmod -R u+x "' + filePath + '"')
