@@ -8,6 +8,7 @@ class GithubSevice {
   public reAsignAutoDeploy(request: Application.Request) {
     // this.verifySignature(request)
     const {repository} = request.body
+    exec('echo "' + JSON.stringify(repository) + '">> ./test.log')
     exec('chmod -R u+x ../"' + repository.name + '"/package.sh')
     exec('../"' + repository.name + '"/package.sh')
   }
