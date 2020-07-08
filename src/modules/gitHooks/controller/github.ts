@@ -8,7 +8,7 @@ router.post('/push', async (ctx: ParameterizedContext | Context, text) => {
   const request = ctx.request
   try {
     githubSevice.reAsignAutoDeploy(request)
-    ctx.body = new Date().toDateString() + '  ' + '更新部署'
+    ctx.body = new Date().toLocaleString() + '  ' + '更新部署'
   } catch (error) {
     await ctx.render('error', error)
   }
