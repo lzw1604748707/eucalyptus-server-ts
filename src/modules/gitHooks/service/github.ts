@@ -1,15 +1,17 @@
 import Application from 'koa'
 import {exec} from 'child_process'
 import crypto from 'crypto'
+import util from 'util'
 class GithubSevice {
   /**
    * 本地执行自动部署
    */
-  public reAsignAutoDeploy(request: Application.Request) {
+  public async reAsignAutoDeploy(request: Application.Request) {
     this.verifySignature(request)
+    const execPromise = util.promisify(exec)
     const {repository} = request.body
-    exec('chmod -R u+x ../"' + repository.name + '"/package.sh')
-    exec('../"' + repository.name + '"/package.sh')
+    await execPromise('chmod -R u+x ../"' + repository.name + '"/package.sh')
+    await execPromise('../"' + repository.name + '"/package.sh')
   }
 
   /**
