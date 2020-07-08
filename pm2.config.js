@@ -17,8 +17,8 @@ module.exports = {
       name: 'app',
       script: './src/app.ts',
       wait_ready: true,
-      watch: true,
-      ignore_watch: ['node_modules']
+      watch: ['src'],
+      ignore_watch: ['node_modules', 'src/public']
     }
   ]
 }

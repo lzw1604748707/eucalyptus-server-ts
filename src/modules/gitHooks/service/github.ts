@@ -9,15 +9,17 @@ class GithubSevice {
    */
   public async reAsignAutoDeploy(request: Application.Request) {
     try {
-      await this.verifySignature(request)
+      // await this.verifySignature(request)
       const {repository} = request.body
+      const execPromise = util.promisify(exec)
       // 获取指定目录
       const filePath = path.join(process.cwd(), '..', repository.name, 'package.sh')
-      exec('echo "' + filePath + '" >> data.log')
       if (repository.name === process.env['npm_package_name']) {
         // 设置执行权限
         exec('chmod -R u+x "' + filePath + '"')
-        exec('"' + filePath + '"')
+        exec(filePath, (errror, stdout) => {
+          console.log(stdout, '自动部署完成')
+        })
         return Promise.resolve()
       } else {
         const execPromise = util.promisify(exec)
