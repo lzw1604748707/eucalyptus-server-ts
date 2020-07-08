@@ -1,3 +1,3 @@
 # eucalyptus-server-ts
 
-测试 打包
+测试 自动部署
