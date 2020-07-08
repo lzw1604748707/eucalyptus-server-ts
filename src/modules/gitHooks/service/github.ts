@@ -31,7 +31,7 @@ class GithubSevice {
     const signature = Buffer.from(request.headers['x-hub-signature'])
     const localSignature = Buffer.from(
       `sha1=${crypto
-        .createHmac('sha1', 'enculyptus')
+        .createHmac('sha1', 'eucalyptus')
         .update(signature)
         .digest('hex')}`
     )
