@@ -1,2 +1,2 @@
 git pull
-echo '执行测试' >> ./test.log
+echo '执行自动部署' >> ./test.log
