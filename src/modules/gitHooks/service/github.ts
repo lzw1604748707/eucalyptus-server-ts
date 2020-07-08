@@ -3,6 +3,7 @@ import {exec} from 'child_process'
 import crypto from 'crypto'
 import util from 'util'
 import path from 'path'
+
 class GithubSevice {
   /**
    * 本地执行自动部署
@@ -35,26 +36,29 @@ class GithubSevice {
    * 验证签名信息
    */
   private verifySignature(request: Application.Request) {
+    // 错误验证
     const errorMessageMap: Record<string, any> = {
       'x-hub-signature': '没有钩子签名哦~',
       'x-github-event': '你还没说你要用什么方法呢！',
       'x-github-delivery': '你也不给个身份吗！！'
     }
-
     for (const key in errorMessageMap) {
       if (!request.headers[key]) return Promise.reject(errorMessageMap[key])
     }
 
-    const signature = Buffer.from(request.headers['x-hub-signature'])
-    const localSignature = Buffer.from(
-      `sha1=${crypto
-        .createHmac('sha1', 'eucalyptus')
-        .update(signature)
-        .digest('hex')}`
-    )
+    // 签名验证
+    const gitBuffer = Buffer.from(request.headers['x-hub-signature'])
+    const localSignature = `sha1=${crypto
+      .createHmac('sha1', 'eucalyptus')
+      .update(request.rawBody)
+      .digest('hex')}`
+    const localBuffer = Buffer.from(localSignature)
+
+    console.log('gitHub签名', request.headers['x-hub-signature'])
+    console.log('本地签名', localSignature)
     if (
-      signature.length !== localSignature.length ||
-      !crypto.timingSafeEqual(signature, localSignature)
+      gitBuffer.length !== localBuffer.length ||
+      !crypto.timingSafeEqual(gitBuffer, localBuffer)
     )
       return Promise.reject('不能做坏事！')
   }
